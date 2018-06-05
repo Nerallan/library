@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="/js/datatable.js"></script>
+    <script th:src="@{/js/datatable.js}" ></script>
 </head>
 
 <body>
-<h1>Employees Table</h1>
+<h1>Users Table</h1>
 <table id="employeesTable" class="display">
 
     <!-- Header Table -->
@@ -23,6 +24,7 @@
         <th>Name</th>
         <th>Last Name</th>
         <th>Email</th>
+        <th>Balans</th>
         <th>Active</th>
     </tr>
     </thead>
@@ -33,6 +35,7 @@
         <th>Name</th>
         <th>Last Name</th>
         <th>Email</th>
+        <th>Balans</th>
         <th>Active</th>
     </tr>
     </tfoot>

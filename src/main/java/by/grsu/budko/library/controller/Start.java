@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Start {
-    // handles GET requests for / by returning the name of a View (hello)
+    // handles GET requests for / by returning the name of a View (index)
     @RequestMapping(value="/", method = RequestMethod.GET)
     public ModelAndView getIndex(){
         ModelAndView modelAndView = new ModelAndView();

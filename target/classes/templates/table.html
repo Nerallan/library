@@ -9,8 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- my css -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
 </head>
 <body>
 <!-- included header -->
@@ -31,9 +30,16 @@
             <td th:text="${book.bookTitle}">book title</td>
             <td th:text="${book.bookAuthor}">book author</td>
             <td th:text="${book.bookPrice}">book price</td>
+            <!--<td>-->
+                <!--<a th:href="/view/${book.id}">View</a>-->
+                <!--<a th:href="/delete/${book.id}">Delete</a>-->
+                <!--<a th:href="/edit/${book.id}">Edit</a>-->
+            <!--</td>-->
         </tr>
         </tbody>
     </table>
+    <hr/>
+
 </div>
 <!-- included footer -->
 <footer th:replace="fragment/footer"></footer>
