@@ -9,7 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- my css -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bookTable.css}" />
 </head>
 <body>
 <!-- included header -->
@@ -30,18 +30,40 @@
             <td th:text="${book.bookTitle}">book title</td>
             <td th:text="${book.bookAuthor}">book author</td>
             <td th:text="${book.bookPrice}">book price</td>
-            <!--<td>-->
-                <!--<a th:href="/view/${book.id}">View</a>-->
-                <!--<a th:href="/delete/${book.id}">Delete</a>-->
-                <!--<a th:href="/edit/${book.id}">Edit</a>-->
-            <!--</td>-->
+            <td>
+                <a th:href="@{/view/${book.id}}">View</a>
+                <a th:href="@{/delete/${book.id}}">Delete</a>
+                <a th:href="@{/edit/${book.id}}">Edit</a>
+            </td>
         </tr>
         </tbody>
     </table>
     <hr/>
+    <!--<form method="post" action="/save">-->
+        <!--<input type="hidden" name="id" value=""/>-->
+        <!--First name:<br>-->
+        <!--<input type="text" name="firstname"/>-->
+        <!--<br>-->
+        <!--Last name:<br>-->
+        <!--<input type="text" name="lastname" >-->
+        <!--<br><br>-->
+        <!--<input type="submit" value="Submit">-->
+    <!--</form>-->
 
+
+    <form th:action="@{/save}" method="POST">
+        <br/>
+
+        <input  id="title" name="title"  th:placeholder="Title"
+               class="form-control" /> <br/>
+        <input  id="author" name="author"  th:placeholder="Author"
+                class="form-control" /> <br />
+        <input  id="price" name="price"  th:placeholder="Price"
+                class="form-control" /> <br />
+
+        <button name="Submit" value="Submit" type="Submit" th:text="Submit"></button>
+    </form>
 </div>
-<!-- included footer -->
-<footer th:replace="fragment/footer"></footer>
+
 </body>
 </html>

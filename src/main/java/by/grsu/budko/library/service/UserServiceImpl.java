@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByEmail(email);
 	}
 
+	// encrypt user password and assign a role USER
 	@Override
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));

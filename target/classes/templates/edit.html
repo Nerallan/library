@@ -9,20 +9,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- my css -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bookTable.css}" />
 </head>
 <body>
-<hr/>
-<form method="post" action="/save">
-    <input type="hidden" name="id" value="${lists.id}"/><br/>
-    First name:<br>
-    <input type="text" name="firstname" value="${lists.firstName}"/>
-    <br>
-    Last name:<br>
-    <input type="text" name="lastname" value="${lists.lastName}">
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
+edit
 
 </body>
 </html>

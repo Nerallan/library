@@ -16,18 +16,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private UserService userService;
 
+	// return login page
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
-	
-	
+
+	// return registration page
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -36,7 +37,9 @@ public class LoginController {
 		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
-	
+
+
+	// mapping all input data with db
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -53,28 +56,30 @@ public class LoginController {
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
-			
+
 		}
 		return modelAndView;
 	}
-	
+
+	// return list of user for user with admin role
 	@RequestMapping(value="/admin/listUsers", method = RequestMethod.GET)
 	public ModelAndView homeAdmin(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+//		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+//		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/listUsers");
 		return modelAndView;
 	}
 
+	// return profile page for user
 	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public ModelAndView homeUser(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")" + " your balans is " + user.getBalans());
 		modelAndView.addObject("adminMessage","Content Available for Users Role");
 		modelAndView.setViewName("/home");
 		return modelAndView;
